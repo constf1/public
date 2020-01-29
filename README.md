@@ -1,3 +1,22 @@
+# Getting Started
+```sh
+# Creates an app called public-app
+npx create-react-app public-app --template typescript
+cd public-app
+
+# Adds the type definitions
+npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+
+# Add React Router package
+npm install --save react-router-dom @types/react-router-dom
+```
+
+## Push the repository from the command line
+```sh
+git remote add origin https://github.com/constf1/public.git
+git push -u origin master
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
