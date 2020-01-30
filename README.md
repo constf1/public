@@ -9,6 +9,9 @@ npm install --save typescript @types/node @types/react @types/react-dom @types/j
 
 # Add React Router package
 npm install --save react-router-dom @types/react-router-dom
+
+# Add SASS support
+npm install node-sass
 ```
 
 ## Push the repository from the command line
