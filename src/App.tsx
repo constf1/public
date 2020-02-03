@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch, useParams 
 // import logo from './logo.svg';
 import './App.css';
 
+import { MandaicKeyboard } from './mandaic-keyboard/mandaic-keyboard';
+
 function Home() {
   return <h2>Home</h2>;
 }
@@ -55,6 +57,55 @@ function Topics() {
   );
 }
 
+function UnicodeProjects() {
+  let match = useRouteMatch();
+  return (
+    <div>
+      <h2>Unicode Projects</h2>
+      <ul>
+        <li>
+          <Link to={match.url + '/mandaic'}>Mandaic Keyboard</Link>
+        </li>
+      </ul>
+
+      <Switch>
+        <Route path={match.path + '/mandaic'}>
+          <MandaicKeyboard />
+        </Route>
+      </Switch>
+    </div>
+  );
+}
+
+function Projects() {
+  let match = useRouteMatch();
+  return (
+    <div>
+      <h2>Projects</h2>
+      <ul>
+        <li>
+          <Link to={match.url + '/unicode'}>Unicode</Link>
+        </li>
+      </ul>
+
+      {
+      /** The Topics has its own <Switch> with more routes that build on the /topics URL path.
+       * You can think of the secons <Route> here as an "index" page for all topics, or the page
+       * that is shown when no topic is selected.
+       */
+      }
+      <Switch>
+        <Route path={match.path + '/unicode'}>
+          <UnicodeProjects />
+        </Route>
+        <Route path={match.path}>
+          <h3>Please select a project.</h3>
+        </Route>
+      </Switch>
+    </div>
+  );
+}
+
 const App: React.FC = () => {
   return (
     <Router>
@@ -72,6 +123,9 @@ const App: React.FC = () => {
             </li>
             <li>
               <Link to="/topics">Topics</Link>
+            </li>
+            <li>
+              <Link to="/projects">Projects</Link>
             </li>
           </ul>
         </nav>
@@ -91,6 +145,9 @@ const App: React.FC = () => {
         </Route>
         <Route path="/topics">
           <Topics />
+        </Route>
+        <Route path="/projects">
+          <Projects />
         </Route>
         <Route path="/">
           <Home />
